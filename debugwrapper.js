@@ -1,15 +1,15 @@
-const bodyParser = require("body-parser");
+import bodyParser from "body-parser";
 var jsonParser = bodyParser.json();
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 var jsonParser = bodyParser.json();
-const { v4: uuidv4 } = require("uuid");
+import { v4 as uuidv4 } from "uuid";
 
 //Point this to the Lambda function entry point
-const layoutHandler = require("./index.js");
+import { handler } from "./index.js";
 
-const express = require("express");
+import express from "express";
 
-const cors = require("cors");
+import cors from "cors";
 
 const processRequest = (req, res, next) => {
   const event = {
@@ -23,7 +23,7 @@ const processRequest = (req, res, next) => {
     awsRequestId: uuidv4(),
   };
 
-  layoutHandler.handler(event, context).then((response) => {
+  handler(event, context).then((response) => {
     const body = JSON.parse(response.body);
     res.status(response.statusCode).json(body);
     res.end();
@@ -45,6 +45,6 @@ app.use(
 
 app.use(jsonParser, processRequest);
 
-app.listen(3000);
+app.listen(4000);
 
-console.log("Listening on 3000");
+console.log("Listening on 4000");
