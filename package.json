@@ -9,7 +9,7 @@
     "dev": "nodemon debugwrapper.js"
   },
   "author": "",
-  "license": "GNU",
+  "license": "MIT",
   "devDependencies": {
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
