@@ -1,0 +1,10 @@
+//https://cognito-idp._region_.amazonaws.com/_userPoolId_/.well-known/jwks.json
+
+export const COGNITO_JWK = {
+  alg: "XXXXX",
+  e: "XXXX",
+  kid: "XXXXXXX",
+  kty: "XXXXX",
+  n: "XXXXX",
+  use: "XXXXX",
+};

@@ -1,13 +1,12 @@
-// const dynamodb = new DynamoDB();
-// const dynamodbDoc = DynamoDBDocument.from(dynamodb);
-
 import dynamoDb from "./aws/dynamo.js";
-
-var LAYOUT_ID = "";
+import { verifyIDToken } from "./aws/cognitoauth.js";
 
 const tableName = "dynamoDbTable";
 
 export const handler = async (event, context) => {
+  //Get the Cognito user if there is one
+  const authUser = verifyIDToken(event);
+
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
