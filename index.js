@@ -10,7 +10,19 @@ export const handler = async (event, context) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Credentials": true,
+    "Access-Control-Allow-Headers": "Authorization",
   };
+  if (event.httpMethod.toUpperCase() == "OPTIONS") {
+    console.log("OPTIONS");
+    const response = {
+      statusCode: 200,
+      headers: headers,
+      body: JSON.stringify({ message: "ok" }),
+    };
+    console.log(response);
+    return response;
+  }
 
   var result = { statusCode: 500, body: "Not implemented" };
   console.log(event.path);
