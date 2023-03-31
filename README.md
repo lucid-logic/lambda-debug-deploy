@@ -28,5 +28,5 @@ Do not modify debugwrapper. Index.js is the entry point.
 10. Click on Resources and then /{proxy+}. Actions Enable Cors. Access-Control-Allow-Credentials `true`. Enable Cors and replace existing CORS headers
 11. Actions Deploy. New Stage name (Prod), Deploy
 
-###Option 2 Copy an existing API already set up
+###Option 2 Copy an existing API already set up (test_REST)
 If you do this change the post to mock and then re add the lambda function
