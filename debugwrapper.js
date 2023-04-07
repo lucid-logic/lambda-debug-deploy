@@ -24,7 +24,14 @@ const processRequest = (req, res, next) => {
   };
 
   handler(event, context).then((response) => {
-    const body = JSON.parse(response.body);
+    let body = null;
+    try {
+      body = JSON.parse(response.body);
+    } catch (e) {
+      res.status(response.statusCode).json("Error parsing response body");
+      res.end();
+      return;
+    }
     res.status(response.statusCode).json(body);
     res.end();
   });
