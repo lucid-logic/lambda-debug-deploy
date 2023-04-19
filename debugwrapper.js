@@ -17,6 +17,7 @@ const processRequest = (req, res, next) => {
     headers: req.headers,
     body: req.body,
     queryStringParameters: req.query,
+    httpMethod: req.method,
   };
 
   const context = {
