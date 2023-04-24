@@ -17,7 +17,26 @@ export default {
           console.log("Error", err);
           return resolve(err);
         }
-        console.log("Success", data);
+        //        console.log("Success", data);
+        return resolve(data);
+      });
+    });
+  },
+  deleteKey: async function (tableName, key) {
+    return new Promise((resolve, reject) => {
+      const dynamodb = new DynamoDB();
+      const dynamodbDoc = DynamoDBDocument.from(dynamodb);
+
+      var params = {
+        TableName: tableName,
+        Key: key,
+      };
+
+      dynamodbDoc.delete(params, function (err, data) {
+        if (err) {
+          console.log("Error", err);
+          return resolve(err);
+        }
         return resolve(data);
       });
     });
@@ -43,7 +62,6 @@ export default {
           console.log("Error", err);
           return resolve(err);
         }
-        console.log("Success", data);
         return resolve(data);
       });
     });
